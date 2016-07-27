@@ -1,2 +1,57 @@
 body {
-  background: #aaa; }
+  margin: 0; }
+
+.section {
+  background-clip: content-box;
+  height: 300px;
+  padding-bottom: 10px; }
+
+#r1 {
+  height: 300px;
+  width: 100%;
+  background-color: #269c26; }
+
+#r2 {
+  height: 300px;
+  width: 100%;
+  background-color: #1a6b1a; }
+
+#r3 {
+  height: 300px;
+  width: 100%;
+  background-color: #0e390e; }
+
+#r4 {
+  float: left; }
+
+#r5 {
+  height: 300px;
+  width: 100%;
+  background-color: black; }
+
+#r6 {
+  height: 300px;
+  width: 100%;
+  background-color: black; }
+
+#r7 {
+  height: 300px;
+  width: 100%;
+  background-color: black; }
+
+#r8 {
+  height: 300px;
+  width: 100%;
+  background-color: black; }
+
+#input-area {
+  padding-bottom: 10px;
+  padding-right: 150px; }
+
+input[type="text"] {
+  background-clip: content-box;
+  background-color: skyblue;
+  border: none;
+  box-sizing: border-box;
+  height: 75px;
+  width: % input-area-width; }

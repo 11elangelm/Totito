@@ -1,5 +1,42 @@
-$dark-color: #aaa;
+$rectangle-height: 300px;
+$rectangle-color: limegreen;
+$rectangle-qty: 8;
+$rectangle-step-color: 12;
+$rectangle-padding-bottom: 10px;
+$input-padding-right: 150px;
+$input-area-color: skyblue;
+$input-height: 75px;
+$input-area-width:100%;
 
 body{
-  background: $dark-color;
+	margin: 0;
+}
+
+.section{
+	background-clip: content-box;
+	height: $rectangle-height;
+	padding-bottom: $rectangle-padding-bottom;
+}
+@for $i from 1 through ($rectangle-qty){
+	#r#{$i}{
+		@if $i != 4 {
+			height: $rectangle-height;
+			width: 100%;
+			background-color: darken($rectangle-color,$rectangle-step-color*$i);
+		} @else{
+			float: left;
+		}
+	}
+}
+#input-area{
+	padding-bottom: $rectangle-padding-bottom;
+	padding-right: $input-padding-right;
+}
+input[type="text"]{
+	background-clip: content-box;
+	background-color: $input-area-color;
+	border: none;
+	box-sizing: border-box;
+	height: $input-height;
+	width: %input-area-width;
 }
