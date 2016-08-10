@@ -1,5 +1,77 @@
-$dark-color: #aaa;
+$box-size: 430px;
+$totito-size: 33.33%;
+$margin: 100px;
 
 body{
-  background: $dark-color;
+  margin: 0 auto;
+}
+.box{
+	border: 2px dotted black;
+	height: $box-size;
+	margin:  $margin;
+	width: $box-size;
+}
+.totito-box{
+	width: $totito-size;
+	height: $totito-size;
+	float: left;
+	box-sizing: border-box;
+}
+@for $i from 1 through 3{
+	@for $j from 1 through 3{
+		@if ($j != 1){
+			#box-#{$i}-#{$j}{
+				border-left: 2px solid black;
+			}
+		}
+		@if ($i != 1){
+			#box-#{$i}-#{$j}{
+				border-top: 2px solid black;
+			}
+		}
+	}
+}
+.equis{
+	background-image: url(http://www.dreamincode.net/forums/uploads/post-97990-1260678617.png);
+	background-size: 100% 100%;
+}
+.circle{
+	background-image: url(http://www.dreamincode.net/forums/uploads/post-97990-1260678636.png);
+	background-size: 100% 100%;
+}
+.rayita{
+	z-index: 5;
+	height: 100%;
+	width: 0px;
+	border: 2px solid black;
+	display:none;
+}
+@for $i from 1 through 4{
+	.#{'dir'}-#{$i}{
+		display: block;
+		@if ($i == 1){
+			transform: rotate(360#{'deg'});
+		} @else if ($i == 2){
+			margin: 0 auto;
+			transform: rotate(45#{'deg'})
+		} @else if ($i == 3){
+			transform: rotate(90#{'deg'});
+		} @else{
+			margin: 0 auto;
+			transform: rotate(135#{'deg'});
+		}
+	}
+}
+@for $i from 1 through 3{
+	.#{'col'}-#{$i}{
+		margin-left: $totito-size*($i - 1)+$totito-size/2;
+	}
+	.#{'row'}-#{$i}{
+		margin-top: $totito-size*($i - 2);
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+button{
+	margin-left: $margin;
 }
