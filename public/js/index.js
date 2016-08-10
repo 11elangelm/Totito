@@ -20,8 +20,8 @@ function render(matriz){
   		html += ' <div id="box-'+(i+1)+'-'+(j+1)+'" class="totito-box'+ classN +'"></div>';
   	}
   }
-  html += '</div> '
   html += '<div id="rayita" class="rayita"></div>';
+  html += '</div> '
   html += '<button id="button">Reset</button>';
   return html;
 }
@@ -71,6 +71,7 @@ function evaluar(id){
 		ganar = true;
 		dir = 2;
 	}
+	viewport.innerHTML = render(matriz);
 	if (ganar){
 		rayita.classList.add("dir-"+dir);
 		if (estado == 1){
@@ -91,7 +92,6 @@ function evaluar(id){
 function jugarEstado(){
 	if (this.classList.length == 1) {
 		evaluar(this.id);
-		viewport.innerHTML = render(matriz);
 		addEvents();
 		estado = cambiarEstado(estado);
 	}
