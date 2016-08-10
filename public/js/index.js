@@ -4,23 +4,20 @@ var divs;
 var rayita;
 var button;
 var viewport = document.getElementsByTagName("BODY")[0];
-viewport.innerHTML = render(matriz);
 reset();
 
 function render(matriz){
   var html = "";
   html += '    <div class="box"> ';
-  x = matriz.length;
-  y = matriz[0].length;
   for (var i = 0; i < matriz.length; i++) {
   	for (var j = 0; j < matriz[0].length; j++) {
   		var classN = "";
   		if (matriz[i][j] == 1){
-  			classN = 'equis';
+  			classN = ' equis';
   		} else if (matriz[i][j] == -1){
-  			classN = 'circle';
+  			classN = ' circle';
   		}
-  		html += ' <div id="box-'+(i+1)+'-'+(j+1)+'" class="totito-box '+ classN +'"></div>';
+  		html += ' <div id="box-'+(i+1)+'-'+(j+1)+'" class="totito-box'+ classN +'"></div>';
   	}
   }
   html += '</div> '
@@ -34,7 +31,7 @@ function addEvents(){
   button = document.getElementById('button');
   button.addEventListener('click',reset);
   for (var i=0; i < divs.length; i++){
-	divs[i].onclick = jugarEstado;
+	divs[i].addEventListener('click',jugarEstado);
   }
 }
 
@@ -50,9 +47,8 @@ function reset(){
 }
 function cambiarEstado(estado){
 	if (estado==-1){
-		estado = 1;
-	} else estado = 1;
-	return estado;
+		return 1;
+	} else return -1;
 }
 function evaluar(id){
 	row = parseInt(id.replace('box-','').split('-')[0])-1;
@@ -79,23 +75,24 @@ function evaluar(id){
 		rayita.classList.add("dir-"+dir);
 		if (estado == 1){
 			alert("Ganó jugador 1");
+			reset();
 		} else {
 			alert("Ganó jugador 2");
+			reset();
 		}
-		reset();
 	}else{
-		if ((matriz[0].indexOf(0)==0) && (matriz[1].indexOf(0)==0) && (matriz[2].indexOf(0)==0)){
+		if ((matriz[0].includes(0)==0) && (matriz[1].includes(0)==0) && (matriz[2].includes(0)==0)){
 			alert("Empate");
+			reset();
 		}
-		reset();
 	}
 }
 
 function jugarEstado(){
-	console.log(this);
 	if (this.classList.length == 1) {
 		evaluar(this.id);
 		viewport.innerHTML = render(matriz);
-		cambiarEstado();
+		addEvents();
+		estado = cambiarEstado(estado);
 	}
 }
